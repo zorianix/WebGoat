@@ -188,6 +188,27 @@
 				<suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>
 			</configuration>
 		</plugin>
+		<plugin>
+  <groupId>org.cyclonedx</groupId>
+  <artifactId>cyclonedx-maven-plugin</artifactId>
+  <version>LATEST</version>
+  <executions>
+    <execution>
+      <phase>verify</phase>
+      <goals>
+        <goal>makeAggregateBom<goals>
+      </goals>
+    </execution>
+  </executions>
+  <configuration>
+    <includeCompileScope>true</includeCompileScope>
+    <includeProvidedScope>true</includeProvidedScope>
+    <includeRuntimeScope>true</includeRuntimeScope>
+    <includeSystemScope>true</includeSystemScope>
+    <includeTestScope>false</includeTestScope>
+    <includeDependencyGraph>true</includeDependencyGraph>
+  </configuration>
+</plugin>
 	</plugins>
 </build>
 
@@ -205,61 +226,7 @@
 		</activation>
 		    <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <encoding>UTF-8</encoding>
-                    <consoleOutput>true</consoleOutput>
-                    <failsOnError>true</failsOnError>
-                    <configLocation>config/checkstyle/checkstyle.xml</configLocation>
-                    <suppressionsLocation>config/checkstyle/suppressions.xml</suppressionsLocation>
-                    <suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>
-                </configuration>
-            </plugin>
-            <plugin>
-      				<groupId>org.apache.maven.plugins</groupId>
-      				<artifactId>maven-pmd-plugin</artifactId>
-      				<version>3.13.0</version>
-      				<configuration>
-      					<targetJdk>11</targetJdk>
-      					<failurePriority>1</failurePriority><!-- 5 means fail even on the lowest
-      						priority, 0 means never fail -->
-      					<rulesets>
-      						<ruleset>${maven.multiModuleProjectDirectory}/pmd-ruleset.xml</ruleset>
-      					</rulesets>
-      					<failOnViolation>true</failOnViolation>
-      					<printFailingErrors>true</printFailingErrors>
-      				</configuration>
-      				<executions>
-      					<execution>
-      						<goals>
-      							<goal>check</goal>
-      						</goals>
-      					</execution>
-      				</executions>
-      			</plugin>
-      			<plugin>
-      				<groupId>org.owasp</groupId>
-      				<artifactId>dependency-check-maven</artifactId>
-      				<version>5.3.2</version>
-      				<configuration>
-      					<failBuildOnCVSS>7</failBuildOnCVSS>
-      					<skipProvidedScope>true</skipProvidedScope>
-                          <skipRuntimeScope>true</skipRuntimeScope>
-      					<suppressionFiles>
-                              <suppressionFile>project-suppression.xml</suppressionFile>
-                          </suppressionFiles>
-      				</configuration>
-      				<executions>
-      					<execution>
-      						<goals>
-      							<goal>check</goal>
-      						</goals>
-      					</execution>
-      				</executions>
-      			</plugin>       
+            
 	</plugins>
     </build>
 	</profile>
