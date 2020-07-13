@@ -196,7 +196,7 @@
     <execution>
       <phase>verify</phase>
       <goals>
-        <goal>makeAggregateBom<goals>
+        <goal>makeAggregateBom</goal>
       </goals>
     </execution>
   </executions>
