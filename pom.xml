@@ -193,14 +193,6 @@
         <groupId>org.cyclonedx</groupId>
         <artifactId>cyclonedx-maven-plugin</artifactId>
         <version>1.4.0</version>
-        <executions>
-            <execution>
-                <phase>verify</phase>
-                <goals>
-                    <goal>makeAggregateBom</goal>
-                </goals>
-            </execution>
-        </executions>
         <configuration>
             <schemaVersion>1.1</schemaVersion>
             <includeBomSerialNumber>true</includeBomSerialNumber>
@@ -210,8 +202,7 @@
             <includeSystemScope>true</includeSystemScope>
             <includeTestScope>false</includeTestScope>
             <includeLicenseText>true</includeLicenseText>
-            <includeDependencyGraph>true</includeDependencyGraph>
-        </configuration>
+           </configuration>
     </plugin>
 </plugins>
 	
